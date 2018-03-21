@@ -3,8 +3,6 @@ FROM alpine:3.7
 LABEL maintainer="Devil.Ster.1"
 LABEL version="1.0"
 
-WORKDIR /var/www/webdav
-
 ENV NGINX_VERSION 1.13.6
 
 RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
@@ -144,6 +142,9 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY webdav.conf /etc/nginx/conf.d/default.conf
+
+WORKDIR /var/www/webdav
+VOLUME /var/www/webdav
 
 EXPOSE 888
 
