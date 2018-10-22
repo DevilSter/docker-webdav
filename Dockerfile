@@ -146,6 +146,8 @@ COPY webdav.conf /etc/nginx/conf.d/default.conf
 WORKDIR /var/www/webdav
 VOLUME /var/www/webdav
 
+RUN chmod -R 777 /var/www/webdav
+
 EXPOSE 888
 
 STOPSIGNAL SIGTERM
