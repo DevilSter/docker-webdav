@@ -146,8 +146,6 @@ COPY webdav.conf /etc/nginx/conf.d/default.conf
 RUN mkdir -p /var/www/webdav ; chown -R nginx:nginx /var/www/webdav
 VOLUME ["/var/www/webdav"]
 
-USER nginx
-
 WORKDIR /var/www/webdav
 
 EXPOSE 888
