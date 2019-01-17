@@ -1,9 +1,9 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 LABEL maintainer="Devil.Ster.1"
-LABEL version="1.0"
+LABEL version="1.1"
 
-ENV NGINX_VERSION 1.13.6
+ENV NGINX_VERSION 1.15.8
 
 RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 	&& CONFIG="\
@@ -26,7 +26,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 		--with-http_realip_module \
 		--with-http_addition_module \
 		--with-http_sub_module \
-		--with-http_dav_module --add-module=/tmp/mods/nginx-dav-ext-module-0.1.0 \
+		--with-http_dav_module --add-module=/tmp/mods/nginx-dav-ext-module-3.0.0 \
 		--with-http_flv_module \
 		--with-http_mp4_module \
 		--with-http_gunzip_module \
@@ -69,7 +69,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
 		expat-dev \
     \
 	&& mkdir /tmp/mods \
-    && curl -fSL https://github.com/arut/nginx-dav-ext-module/archive/v0.1.0.tar.gz -o /tmp/mods/dav-ext.tar.gz \
+    && curl -fSL https://github.com/arut/nginx-dav-ext-module/archive/v3.0.0.tar.gz -o /tmp/mods/dav-ext.tar.gz \
     && tar -zxC /tmp/mods -f /tmp/mods/dav-ext.tar.gz \
     \
 	&& curl -fSL http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz -o nginx.tar.gz \
